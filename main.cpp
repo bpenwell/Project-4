@@ -93,8 +93,17 @@ public:
 	vector<int> m_TestTargetVector_Fold2;
 	vector<int> m_TestTargetVector_Fold3;
 
+	vector<double> m_MeanEigenFeatures_Fold1;
+	vector<double> m_MeanEigenFeatures_Fold2;
+	vector<double> m_MeanEigenFeatures_Fold3;
+
+	vector<double> m_VarEigenFeatures_Fold1;
+	vector<double> m_VarEigenFeatures_Fold2;
+	vector<double> m_VarEigenFeatures_Fold3;
+
 	void Init();
 	void ReduceSizeTo30();
+	void ComputeAvgEigenFeatures();
 };
 
 class DataStorage_16x20{
@@ -120,12 +129,23 @@ public:
 	vector<int> m_TestTargetVector_Fold2;
 	vector<int> m_TestTargetVector_Fold3;
 
+	vector<double> m_MeanEigenFeatures_Fold1;
+	vector<double> m_MeanEigenFeatures_Fold2;
+	vector<double> m_MeanEigenFeatures_Fold3;
+
+	vector<double> m_VarEigenFeatures_Fold1;
+	vector<double> m_VarEigenFeatures_Fold2;
+	vector<double> m_VarEigenFeatures_Fold3;
+
 	void Init();
 	void ReduceSizeTo30();
+	void ComputeAvgEigenFeatures();
 };
 
 void PrintVector2D(vector<vector<double> > vector);
 void PrintVector(vector<int> vector);
+void ExtractAVG(vector<vector<double> > input, double (&array)[30]);
+void ExtractVAR(vector<vector<double> > input, vector<double> means, double (&array)[30]);
 
 int main()
 {
@@ -135,10 +155,11 @@ int main()
 	do
 	{	
 		cout << endl
-		     << "+==============================================================+\n"
-			 << "|Select  0 to obtain 48x60 projected values (fold 1, 2, 3)     |\n"
-		     << "|Select -1 to exit                                             |\n"
-		     << "+==============================================================+\n"
+		     << "+============================================================================+\n"
+			 << "|Select  0 to obtain 16x20 & 48x60 projected values (fold 1, 2, 3)           |\n"
+			 << "|Select  1 to calc 16x20 & 48x60 avg eigen-features (fold 1, 2, 3)           |\n"
+		     << "|Select -1 to exit                                                           |\n"
+		     << "+============================================================================+\n"
 		     << endl
 		     << "Choice: ";
 
@@ -155,6 +176,16 @@ int main()
 			Data_16x20.Init(); //Obtain all needed data from files
 			cout << "Resizing eigen-feature vectors to 30..." << endl;
 			Data_16x20.ReduceSizeTo30();
+		}
+		else if(inputString == "1")
+		{
+			cout << "Extracting data from 48x60 files..." << endl;
+			Data_48x60.ComputeAvgEigenFeatures(); //Initialize avg eigen-features
+			cout << endl;
+			
+			cout << "Extracting data from 16x20 files..." << endl;
+			Data_16x20.ComputeAvgEigenFeatures(); //Initialize avg eigen-features
+			cout << endl;
 		}
 
 	}while(inputString != "-1");
@@ -1582,7 +1613,156 @@ void DataStorage_16x20::ReduceSizeTo30()
 	//PrintVector2D(m_TestVector_Fold3);
 }
 
+void DataStorage_16x20::ComputeAvgEigenFeatures()
+{
+	vector<double> sumDblVector;
+	double returnArray[30];
 
+	cout << "Fold1..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold1.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold1, m_MeanEigenFeatures_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold1.push_back(returnArray[i]);
+	}
+
+	cout << "Fold2..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold2.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold2, m_MeanEigenFeatures_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold2.push_back(returnArray[i]);
+	}
+
+	cout << "Fold3..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold3, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold3.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold3, m_MeanEigenFeatures_Fold3, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold3.push_back(returnArray[i]);
+	}
+}
+
+void DataStorage_48x60::ComputeAvgEigenFeatures()
+{
+	vector<double> sumDblVector;
+	double returnArray[30];
+
+	cout << "Fold1..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold1.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold1, m_MeanEigenFeatures_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold1.push_back(returnArray[i]);
+	}
+
+	cout << "Fold2..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold2.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold2, m_MeanEigenFeatures_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold2.push_back(returnArray[i]);
+	}
+
+	cout << "Fold3..." << endl;
+	// cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold3, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_MeanEigenFeatures_Fold3.push_back(returnArray[i]);
+	}
+	// cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold3, m_MeanEigenFeatures_Fold3, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarEigenFeatures_Fold3.push_back(returnArray[i]);
+	}
+}
+
+void ExtractAVG(vector<vector<double> > input, double (&array)[30])
+{
+	for (int i = 0; i < 30; ++i)
+	{
+		array[i] = 0;
+	}
+
+	for (int i = 0; i < input.size(); ++i)
+	{
+		for (int j = 0; j < input[i].size(); ++j)
+		{
+			array[j] += input[i][j];
+		}
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{
+		array[i] /= 30;
+		//cout << "sumDbl: " << array[i] << endl;
+	}
+}
+void ExtractVAR(vector<vector<double> > input, vector<double> means, double (&array)[30])
+{
+	for (int i = 0; i < 30; ++i)
+	{
+		array[i] = 0;
+	}
+
+	for (int i = 0; i < input.size(); ++i)
+	{
+		for (int j = 0; j < input[i].size(); ++j)
+		{
+			array[j] += (input[i][j]-means[j])*(input[i][j]-means[j]);
+		}
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{
+		array[i] /= 30;
+		//cout << "sumDbl: " << array[i] << endl;
+	}
+}
 void PrintVector2D(vector<vector<double> > vector)
 {
 	for (int i = 0; i < vector.size(); ++i)
