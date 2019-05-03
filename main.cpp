@@ -23,8 +23,8 @@ using Eigen::EigenSolver;
 using namespace std;
 
 //Created by Ben Penwell and Adam Landis
-//Pattern Recognition, Project 3
-//April 9, 2019
+//Pattern Recognition, Project 4
+//May 7, 2019
 
 const int K_VAL = 30;
 
