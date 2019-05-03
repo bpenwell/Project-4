@@ -28,7 +28,7 @@ using namespace std;
 
 const int K_VAL = 30;
 
-const int TR_SIZE = 134;
+const int TR_FOLD_SIZE = 134;
 const string trainingFold1_48x60 = "genderdata/48_60/trPCA_01.txt";
 const string trainingFold2_48x60 = "genderdata/48_60/trPCA_02.txt";
 const string trainingFold3_48x60 = "genderdata/48_60/trPCA_03.txt";
@@ -42,7 +42,7 @@ const string targetTrainingFold1_16x20 = "genderdata/16_20/TtrPCA_01.txt";
 const string targetTrainingFold2_16x20 = "genderdata/16_20/TtrPCA_02.txt";
 const string targetTrainingFold3_16x20 = "genderdata/16_20/TtrPCA_03.txt";
 
-const int VAL_SIZE = 134;
+const int VAL_FOLD_SIZE = 133;
 const string validateFold1_48x60 = "genderdata/48_60/valPCA_01.txt";
 const string validateFold2_48x60 = "genderdata/48_60/valPCA_02.txt";
 const string validateFold3_48x60 = "genderdata/48_60/valPCA_03.txt";
@@ -56,7 +56,7 @@ const string targetValidateFold1_16x20 = "genderdata/16_20/TvalPCA_01.txt";
 const string targetValidateFold2_16x20 = "genderdata/16_20/TvalPCA_02.txt";
 const string targetValidateFold3_16x20 = "genderdata/16_20/TvalPCA_03.txt";
 
-const int TS_SIZE = 133;
+const int TS_FOLD_SIZE = 133;
 const string testFold1_48x60 = "genderdata/48_60/tsPCA_01.txt";
 const string testFold2_48x60 = "genderdata/48_60/tsPCA_02.txt";
 const string testFold3_48x60 = "genderdata/48_60/tsPCA_03.txt";
@@ -313,7 +313,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -356,7 +356,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold1.push_back(inputDbl);
@@ -383,7 +383,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -426,7 +426,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold2.push_back(inputDbl);
@@ -454,7 +454,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -497,7 +497,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold3.push_back(inputDbl);
@@ -525,7 +525,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -568,7 +568,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE-1; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE-1; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold1.push_back(inputDbl);
@@ -595,7 +595,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -638,7 +638,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold2.push_back(inputDbl);
@@ -666,7 +666,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -709,7 +709,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold3.push_back(inputDbl);
@@ -737,7 +737,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -780,7 +780,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold1.push_back(inputDbl);
@@ -807,7 +807,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -850,7 +850,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold2.push_back(inputDbl);
@@ -878,7 +878,7 @@ void DataStorage_48x60::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -921,7 +921,7 @@ void DataStorage_48x60::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold3.push_back(inputDbl);
@@ -1022,7 +1022,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1065,7 +1065,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold1.push_back(inputDbl);
@@ -1092,7 +1092,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1135,7 +1135,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold2.push_back(inputDbl);
@@ -1163,7 +1163,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				m_TrainVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1206,7 +1206,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TR_SIZE; ++j)
+			for (int j = 0; j < TR_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TrainTargetVector_Fold3.push_back(inputDbl);
@@ -1234,7 +1234,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1277,7 +1277,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE-1; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE-1; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold1.push_back(inputDbl);
@@ -1304,7 +1304,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1347,7 +1347,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE-1; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE-1; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold2.push_back(inputDbl);
@@ -1375,7 +1375,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < VAL_SIZE; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE; ++j)
 			{
 				m_ValidateVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1418,7 +1418,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < VAL_SIZE-1; ++j)
+			for (int j = 0; j < VAL_FOLD_SIZE-1; ++j)
 			{
 				fin >> inputDbl;
 				m_ValidateTargetVector_Fold3.push_back(inputDbl);
@@ -1446,7 +1446,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold1.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1489,7 +1489,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold1.push_back(inputDbl);
@@ -1516,7 +1516,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold2.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1559,7 +1559,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold2.push_back(inputDbl);
@@ -1587,7 +1587,7 @@ void DataStorage_16x20::Init()
 		{
 			double inputDbl;
 			string inputString, tempString="";
-			for (int j = 0; j < TS_SIZE+1; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE+1; ++j)
 			{
 				m_TestVector_Fold3.push_back(vector<double>());
 				getline(fin, inputString);
@@ -1630,7 +1630,7 @@ void DataStorage_16x20::Init()
 		else
 		{
 			double inputDbl;
-			for (int j = 0; j < TS_SIZE; ++j)
+			for (int j = 0; j < TS_FOLD_SIZE; ++j)
 			{
 				fin >> inputDbl;
 				m_TestTargetVector_Fold3.push_back(inputDbl);
