@@ -242,7 +242,7 @@ int main()
 		     << "+============================================================================+\n"
 			 << "|Select  0 to obtain 16x20 & 48x60 projected values (fold 1, 2, 3)           |\n"
 			 << "|Select  1 to calc 16x20 & 48x60 avg eigen-features (fold 1, 2, 3)           |\n"
-			 << "|Select  2 to test data with bayesian classifier				              |\n"
+			 << "|Select  2 to test data with bayesian classifier                             |\n"
 		     << "|Select -1 to exit                                                           |\n"
 		     << "+============================================================================+\n"
 		     << endl
