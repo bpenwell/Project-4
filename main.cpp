@@ -73,13 +73,19 @@ const string targetTestFold3_16x20 = "genderdata/16_20/TtsPCA_03.txt";
 class DataStorage_48x60{
 public:
 	DataStorage_48x60() { 
-						  VectorXd temp = VectorXd::Zero(30);
-						  m_MU_Fold1 = temp;
-						  m_MU_Fold2 = temp;
-						  m_MU_Fold3 = temp;
-						  m_VAR_Fold1 = temp;
-						  m_VAR_Fold2 = temp;
-						  m_VAR_Fold3 = temp;
+						  MatrixXd temp = MatrixXd::Zero(30,30);
+						  m_Male_MU_Fold1 = temp;
+						  m_Male_MU_Fold2 = temp;
+						  m_Male_MU_Fold3 = temp;
+						  m_Female_MU_Fold1 = temp;
+						  m_Female_MU_Fold2 = temp;
+						  m_Female_MU_Fold3 = temp;
+						  m_Male_VAR_Fold1 = temp;
+						  m_Male_VAR_Fold2 = temp;
+						  m_Male_VAR_Fold3 = temp;
+						  m_Female_VAR_Fold1 = temp;
+						  m_Female_VAR_Fold2 = temp;
+						  m_Female_VAR_Fold3 = temp;
 						};
 	vector<vector<double> > m_TrainVector_Fold1;
 	vector<vector<double> > m_TrainVector_Fold2;
@@ -102,37 +108,60 @@ public:
 	vector<int> m_TestTargetVector_Fold2;
 	vector<int> m_TestTargetVector_Fold3;
 
-	vector<double> m_MeanEigenFeatures_Fold1;
-	vector<double> m_MeanEigenFeatures_Fold2;
-	vector<double> m_MeanEigenFeatures_Fold3;
-	VectorXd m_MU_Fold1;
-	VectorXd m_MU_Fold2;
-	VectorXd m_MU_Fold3;
+	vector<double> m_MeanMaleEigenFeatures_Fold1;
+	vector<double> m_MeanMaleEigenFeatures_Fold2;
+	vector<double> m_MeanMaleEigenFeatures_Fold3;
 
-	vector<double> m_VarEigenFeatures_Fold1;
-	vector<double> m_VarEigenFeatures_Fold2;
-	vector<double> m_VarEigenFeatures_Fold3;
-	VectorXd m_VAR_Fold1;
-	VectorXd m_VAR_Fold2;
-	VectorXd m_VAR_Fold3;
+	vector<double> m_MeanFemaleEigenFeatures_Fold1;
+	vector<double> m_MeanFemaleEigenFeatures_Fold2;
+	vector<double> m_MeanFemaleEigenFeatures_Fold3;
+	MatrixXd m_Female_MU_Fold1;
+	MatrixXd m_Female_MU_Fold2;
+	MatrixXd m_Female_MU_Fold3;
+
+	MatrixXd m_Male_MU_Fold1;
+	MatrixXd m_Male_MU_Fold2;
+	MatrixXd m_Male_MU_Fold3;
+
+	vector<double> m_VarMaleEigenFeatures_Fold1;
+	vector<double> m_VarMaleEigenFeatures_Fold2;
+	vector<double> m_VarMaleEigenFeatures_Fold3;
+
+	vector<double> m_VarFemaleEigenFeatures_Fold1;
+	vector<double> m_VarFemaleEigenFeatures_Fold2;
+	vector<double> m_VarFemaleEigenFeatures_Fold3;
+	MatrixXd m_Female_VAR_Fold1;
+	MatrixXd m_Female_VAR_Fold2;
+	MatrixXd m_Female_VAR_Fold3;
+
+	MatrixXd m_Male_VAR_Fold1;
+	MatrixXd m_Male_VAR_Fold2;
+	MatrixXd m_Male_VAR_Fold3;
 
 
 	void Init();
 	void ReduceSizeTo30();
 	void ComputeAvgEigenFeatures();
-	void DblVectorToE3Vector(vector<double> input, bool convertVariance, int fold);
+	void DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold);
+	void BayesianClassifier(int fold);
 };
 
 class DataStorage_16x20{
 public:
 	DataStorage_16x20() { 
-						  VectorXd temp = VectorXd::Zero(30);
-						  m_MU_Fold1 = temp;
-						  m_MU_Fold2 = temp;
-						  m_MU_Fold3 = temp;
-						  m_VAR_Fold1 = temp;
-						  m_VAR_Fold2 = temp;
-						  m_VAR_Fold3 = temp;
+						  MatrixXd temp = MatrixXd::Zero(30,30);
+						  m_Male_MU_Fold1 = temp;
+						  m_Male_MU_Fold2 = temp;
+						  m_Male_MU_Fold3 = temp;
+						  m_Female_MU_Fold1 = temp;
+						  m_Female_MU_Fold2 = temp;
+						  m_Female_MU_Fold3 = temp;
+						  m_Male_VAR_Fold1 = temp;
+						  m_Male_VAR_Fold2 = temp;
+						  m_Male_VAR_Fold3 = temp;
+						  m_Female_VAR_Fold1 = temp;
+						  m_Female_VAR_Fold2 = temp;
+						  m_Female_VAR_Fold3 = temp;
 						};
 	vector<vector<double> > m_TrainVector_Fold1;
 	vector<vector<double> > m_TrainVector_Fold2;
@@ -155,30 +184,50 @@ public:
 	vector<int> m_TestTargetVector_Fold2;
 	vector<int> m_TestTargetVector_Fold3;
 
-	vector<double> m_MeanEigenFeatures_Fold1;
-	vector<double> m_MeanEigenFeatures_Fold2;
-	vector<double> m_MeanEigenFeatures_Fold3;
-	VectorXd m_MU_Fold1;
-	VectorXd m_MU_Fold2;
-	VectorXd m_MU_Fold3;
+	vector<double> m_MeanMaleEigenFeatures_Fold1;
+	vector<double> m_MeanMaleEigenFeatures_Fold2;
+	vector<double> m_MeanMaleEigenFeatures_Fold3;
 
-	vector<double> m_VarEigenFeatures_Fold1;
-	vector<double> m_VarEigenFeatures_Fold2;
-	vector<double> m_VarEigenFeatures_Fold3;
-	VectorXd m_VAR_Fold1;
-	VectorXd m_VAR_Fold2;
-	VectorXd m_VAR_Fold3;
+	vector<double> m_MeanFemaleEigenFeatures_Fold1;
+	vector<double> m_MeanFemaleEigenFeatures_Fold2;
+	vector<double> m_MeanFemaleEigenFeatures_Fold3;
+	MatrixXd m_Female_MU_Fold1;
+	MatrixXd m_Female_MU_Fold2;
+	MatrixXd m_Female_MU_Fold3;
+
+	MatrixXd m_Male_MU_Fold1;
+	MatrixXd m_Male_MU_Fold2;
+	MatrixXd m_Male_MU_Fold3;
+
+	vector<double> m_VarMaleEigenFeatures_Fold1;
+	vector<double> m_VarMaleEigenFeatures_Fold2;
+	vector<double> m_VarMaleEigenFeatures_Fold3;
+
+	vector<double> m_VarFemaleEigenFeatures_Fold1;
+	vector<double> m_VarFemaleEigenFeatures_Fold2;
+	vector<double> m_VarFemaleEigenFeatures_Fold3;
+	MatrixXd m_Female_VAR_Fold1;
+	MatrixXd m_Female_VAR_Fold2;
+	MatrixXd m_Female_VAR_Fold3;
+
+	MatrixXd m_Male_VAR_Fold1;
+	MatrixXd m_Male_VAR_Fold2;
+	MatrixXd m_Male_VAR_Fold3;
 
 	void Init();
 	void ReduceSizeTo30();
 	void ComputeAvgEigenFeatures();
-	void DblVectorToE3Vector(vector<double> input, bool convertVariance, int fold);
+	void DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold);
+	void BayesianClassifier(int fold);
 };
 
 void PrintVector2D(vector<vector<double> > vector);
 void PrintVector(vector<int> vector);
-void ExtractAVG(vector<vector<double> > input, double (&array)[30]);
-void ExtractVAR(vector<vector<double> > input, vector<double> means, double (&array)[30]);
+void ExtractAVG(vector<vector<double> > input, vector<int> labels, double (&maleArray)[30], double (&femaleArray)[30]);
+void ExtractVAR(vector<vector<double> > input, vector<double> maleMeans, vector<double> femaleMeans, vector<int> labels, double (&maleArray)[30], double (&femaleArray)[30]);
+//void ExtractAVG(vector<vector<double> > input, double (&array)[30], double (&array)[30]);
+//void ExtractVAR(vector<vector<double> > input, vector<double> maleMeans, vector<double> femaleMeans, double (&array)[30], double (&array)[30]);
+MatrixXd DiscriminantFunction(MatrixXd x, MatrixXd mu, MatrixXd sigma);
 
 int main()
 {
@@ -193,6 +242,7 @@ int main()
 		     << "+============================================================================+\n"
 			 << "|Select  0 to obtain 16x20 & 48x60 projected values (fold 1, 2, 3)           |\n"
 			 << "|Select  1 to calc 16x20 & 48x60 avg eigen-features (fold 1, 2, 3)           |\n"
+			 << "|Select  2 to test data with bayesian classifier				              |\n"
 		     << "|Select -1 to exit                                                           |\n"
 		     << "+============================================================================+\n"
 		     << endl
@@ -218,13 +268,34 @@ int main()
 			Data_48x60.ComputeAvgEigenFeatures(); //Initialize avg eigen-features
 			cout << endl;
 			
+			//cout << "Data_48x60.m_MU_Fold1:" << endl << Data_48x60.m_MU_Fold1 << endl;
+			
 			cout << "Extracting data from 16x20 files..." << endl;
 			Data_16x20.ComputeAvgEigenFeatures(); //Initialize avg eigen-features
+		
+			//cout << Data_16x20.m_MU_Fold1 << endl;
+		
+		}
+		else if(inputString == "2")
+		{
+			cout << "Classifying fold 1 data from 16x20 files..." << endl;
+			Data_16x20.BayesianClassifier(1);
+			cout << "Classifying fold 1 data from 48x60 files..." << endl;
+			Data_48x60.BayesianClassifier(1);
+
+			cout << "Classifying fold 2 data from 16x20 files..." << endl;
+			Data_16x20.BayesianClassifier(2);
+			cout << "Classifying fold 2 data from 48x60 files..." << endl;
+			Data_48x60.BayesianClassifier(2);
+
+			cout << "Classifying fold 3 data from 16x20 files..." << endl;
+			Data_16x20.BayesianClassifier(3);
+			cout << "Classifying fold 3 data from 48x60 files..." << endl;
+			Data_48x60.BayesianClassifier(3);
 		}
 
 	}while(inputString != "-1");
 }
-
 void DataStorage_48x60::Init()
 {
 	ifstream fin;
@@ -865,7 +936,6 @@ void DataStorage_48x60::Init()
 	}
 	//------------------------------------
 }
-
 void DataStorage_48x60::ReduceSizeTo30()
 {
 	//----------------------------------
@@ -935,7 +1005,6 @@ void DataStorage_48x60::ReduceSizeTo30()
 	// cout << "m_TestVector_Fold3: " << endl;
 	// PrintVector2D(m_TestVector_Fold3);
 }
-
 void DataStorage_16x20::Init()
 {
 	ifstream fin;
@@ -1576,7 +1645,6 @@ void DataStorage_16x20::Init()
 	}
 	//------------------------------------
 }
-
 void DataStorage_16x20::ReduceSizeTo30()
 {
 	//----------------------------------
@@ -1646,260 +1714,600 @@ void DataStorage_16x20::ReduceSizeTo30()
 	//cout << "m_TestVector_Fold3: " << endl;
 	//PrintVector2D(m_TestVector_Fold3);
 }
-
 void DataStorage_16x20::ComputeAvgEigenFeatures()
 {
 	vector<double> sumDblVector;
-	double returnArray[30];
+	double returnMaleArray[30];
+	double returnFemaleArray[30];
 
 	cout << "Fold1..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold1, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold1.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold1, 0, 1);
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold1, m_TrainTargetVector_Fold1, returnMaleArray, returnFemaleArray);
 
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold1, m_MeanEigenFeatures_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold1.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold1.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold1, 1, 0, 1);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold1, 0, 0, 1);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold1, m_MeanMaleEigenFeatures_Fold1, m_MeanFemaleEigenFeatures_Fold1, m_TrainTargetVector_Fold1, returnMaleArray, returnFemaleArray);
 	for (int i = 0; i < 30; ++i)
 	{
 		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold1.push_back(returnArray[i]);
+		m_VarMaleEigenFeatures_Fold1.push_back(returnMaleArray[i]);
 	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold1, 1, 1);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold1.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold1, 1, 1, 1);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold1, 0, 1, 1);
 
 	cout << "Fold2..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold2, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold2.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold2, 0, 2);
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold2, m_TrainTargetVector_Fold2, returnMaleArray, returnFemaleArray);
 
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold2, m_MeanEigenFeatures_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold2.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold2.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold2, 1, 0, 2);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold2, 0, 0, 2);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold2, m_MeanMaleEigenFeatures_Fold2, m_MeanFemaleEigenFeatures_Fold2, m_TrainTargetVector_Fold2, returnMaleArray, returnFemaleArray);
 	for (int i = 0; i < 30; ++i)
 	{
 		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold2.push_back(returnArray[i]);
+		m_VarMaleEigenFeatures_Fold2.push_back(returnMaleArray[i]);
 	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold2, 1, 2);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold2.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold2, 1, 1, 2);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold2, 0, 1, 2);
 
 	cout << "Fold3..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold3, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold3.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold3, 0, 3);
-	
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold3, m_MeanEigenFeatures_Fold3, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold3.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold3, 1, 3);
-}
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold3, m_TrainTargetVector_Fold3, returnMaleArray, returnFemaleArray);
 
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold3.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold3.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold3, 1, 0, 3);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold3, 0, 0, 3);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold3, m_MeanMaleEigenFeatures_Fold3, m_MeanFemaleEigenFeatures_Fold3, m_TrainTargetVector_Fold3, returnMaleArray, returnFemaleArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarMaleEigenFeatures_Fold3.push_back(returnMaleArray[i]);
+	}
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold3.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold3, 1, 1, 3);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold3, 0, 1, 3);
+}
 void DataStorage_48x60::ComputeAvgEigenFeatures()
 {
 	vector<double> sumDblVector;
-	double returnArray[30];
+	double returnMaleArray[30];
+	double returnFemaleArray[30];
 
 	cout << "Fold1..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold1, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold1.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold1, 0, 1);
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold1, m_TrainTargetVector_Fold1, returnMaleArray, returnFemaleArray);
 
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold1, m_MeanEigenFeatures_Fold1, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold1.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold1.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold1, 1, 0, 1);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold1, 0, 0, 1);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold1, m_MeanMaleEigenFeatures_Fold1, m_MeanFemaleEigenFeatures_Fold1, m_TrainTargetVector_Fold1, returnMaleArray, returnFemaleArray);
 	for (int i = 0; i < 30; ++i)
 	{
 		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold1.push_back(returnArray[i]);
+		m_VarMaleEigenFeatures_Fold1.push_back(returnMaleArray[i]);
 	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold1, 1, 1);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold1.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold1, 1, 1, 1);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold1, 0, 1, 1);
 
 	cout << "Fold2..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold2, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold2.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold2, 0, 2);
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold2, m_TrainTargetVector_Fold2, returnMaleArray, returnFemaleArray);
 
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold2, m_MeanEigenFeatures_Fold2, returnArray);
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold2.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold2.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold2, 1, 0, 2);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold2, 0, 0, 2);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold2, m_MeanMaleEigenFeatures_Fold2, m_MeanFemaleEigenFeatures_Fold2, m_TrainTargetVector_Fold2, returnMaleArray, returnFemaleArray);
 	for (int i = 0; i < 30; ++i)
 	{
 		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold2.push_back(returnArray[i]);
+		m_VarMaleEigenFeatures_Fold2.push_back(returnMaleArray[i]);
 	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold2, 1, 2);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold2.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold2, 1, 1, 2);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold2, 0, 1, 2);
 
 	cout << "Fold3..." << endl;
-	// cout << "Computing means..." << endl;
-	ExtractAVG(m_TrainVector_Fold3, returnArray);
+	cout << "Computing means..." << endl;
+	ExtractAVG(m_TrainVector_Fold3, m_TrainTargetVector_Fold3, returnMaleArray, returnFemaleArray);
+
+	for (int i = 0; i < 30; ++i)
+	{
+		m_MeanMaleEigenFeatures_Fold3.push_back(returnMaleArray[i]);
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{	
+		m_MeanFemaleEigenFeatures_Fold3.push_back(returnFemaleArray[i]);
+	}
+
+	DblVectorToE3Matrix(m_MeanMaleEigenFeatures_Fold3, 1, 0, 3);
+	DblVectorToE3Matrix(m_MeanFemaleEigenFeatures_Fold3, 0, 0, 3);
+	cout << "Computing variances..." << endl;
+	ExtractVAR(m_TrainVector_Fold3, m_MeanMaleEigenFeatures_Fold3, m_MeanFemaleEigenFeatures_Fold3, m_TrainTargetVector_Fold3, returnMaleArray, returnFemaleArray);
 	for (int i = 0; i < 30; ++i)
 	{
 		// cout << i << ": " << returnArray[i] << endl;
-		m_MeanEigenFeatures_Fold3.push_back(returnArray[i]);
+		m_VarMaleEigenFeatures_Fold3.push_back(returnMaleArray[i]);
 	}
-	DblVectorToE3Vector(m_MeanEigenFeatures_Fold3, 0, 3);
+	for (int i = 0; i < 30; ++i)
+	{
+		// cout << i << ": " << returnArray[i] << endl;
+		m_VarFemaleEigenFeatures_Fold3.push_back(returnFemaleArray[i]);
+	}
+	DblVectorToE3Matrix(m_VarMaleEigenFeatures_Fold3, 1, 1, 3);
+	DblVectorToE3Matrix(m_VarFemaleEigenFeatures_Fold3, 0, 1, 3);
+}
+void DataStorage_48x60::DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold)
+{
+	for (int i = 0; i < input.size(); ++i)
+	{
+		if(!convertVariance)
+		{
+			if(fold == 1)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold1(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold1(i,i) = input[i];
+				}
+				// cout << m_MU_Fold1(i) << " ";
+			}
+			else if(fold == 2)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold2(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold2(i,i) = input[i];
+				}				// cout << m_MU_Fold2(i) << " ";
+			}
+			else if(fold == 3)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold3(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold3(i,i) = input[i];
+				}
+				// cout << m_MU_Fold3(i) << " ";
+			}
+		}
+		else
+		{
+			if(fold == 1)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold1(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold1(i,i) = input[i];
+				}
+				// cout << m_MU_Fold1(i) << " ";
+			}
+			else if(fold == 2)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold2(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold2(i,i) = input[i];
+				}
+				// cout << m_MU_Fold2(i) << " ";
+			}
+			else if(fold == 3)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold3(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold3(i,i) = input[i];
+				}
+
+				// cout << m_MU_Fold3(i) << " ";
+			}
+		}
+	}
+	// cout << endl;
+}
+void DataStorage_16x20::DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold)
+{
+	for (int i = 0; i < input.size(); ++i)
+	{
+		if(!convertVariance)
+		{
+			if(fold == 1)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold1(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold1(i,i) = input[i];
+				}
+				// cout << m_MU_Fold1(i) << " ";
+			}
+			else if(fold == 2)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold2(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold2(i,i) = input[i];
+				}				// cout << m_MU_Fold2(i) << " ";
+			}
+			else if(fold == 3)
+			{
+				if(isMaleVector)
+				{
+					m_Male_MU_Fold3(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_MU_Fold3(i,i) = input[i];
+				}
+				// cout << m_MU_Fold3(i) << " ";
+			}
+		}
+		else
+		{
+			if(fold == 1)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold1(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold1(i,i) = input[i];
+				}
+				// cout << m_MU_Fold1(i) << " ";
+			}
+			else if(fold == 2)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold2(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold2(i,i) = input[i];
+				}
+				// cout << m_MU_Fold2(i) << " ";
+			}
+			else if(fold == 3)
+			{
+				if(isMaleVector)
+				{
+					m_Male_VAR_Fold3(i,i) = input[i];
+				}
+				else
+				{
+					m_Female_VAR_Fold3(i,i) = input[i];
+				}
+
+				// cout << m_MU_Fold3(i) << " ";
+			}
+		}
+	}
+	// cout << endl;
+}
+void DataStorage_16x20::BayesianClassifier(int fold)
+{
+	if(fold == 1)
+	{
+		int numMales = 0, numFemales = 0;
+		cout << "Running testing data..." << endl;
+		for (int j = 0; j < m_TestVector_Fold1.size(); ++j)
+		{
+			MatrixXd test(30,30);
+			for (int i = 0; i < m_TestVector_Fold1[j].size(); ++i)
+			{
+				test(i,i) = m_TestVector_Fold1[j][i];
+			}
+
+			// cout << "test: " << endl << test << endl;
+
+			MatrixXd g1 = DiscriminantFunction(test,m_Male_MU_Fold1,m_Male_VAR_Fold1);
+			//cout << "g1: " << g1(0,0) << endl;
+
+			MatrixXd g2 = DiscriminantFunction(test,m_Female_MU_Fold1,m_Female_VAR_Fold1);
+			//cout << "g2: " << g2(0,0) << endl;
+			
+			double classify = g1(0,0)-g2(0,0);
+			cout << "(g1-g2): " << classify << endl;
+			
+			if(classify > 0)
+			{
+				numMales++;
+			}
+			else
+			{
+				numFemales++;
+			}
+		}
+		cout << "Classified Males: " <<	numMales << endl;
+		cout << "Classified Females: " << numFemales << endl;
+	}
+	else if(fold == 2)
+	{
+		int numMales = 0, numFemales = 0;
+		cout << "Running testing data..." << endl;
+		for (int j = 0; j < m_TestVector_Fold2.size(); ++j)
+		{
+			MatrixXd test(30,30);
+			for (int i = 0; i < m_TestVector_Fold2[j].size(); ++i)
+			{
+				test(i,i) = m_TestVector_Fold2[j][i];
+			}
+
+			// cout << "test: " << endl << test << endl;
+
+			MatrixXd g1 = DiscriminantFunction(test,m_Male_MU_Fold2,m_Male_VAR_Fold2);
+			//cout << "g1: " << g1(0,0) << endl;
+
+			MatrixXd g2 = DiscriminantFunction(test,m_Female_MU_Fold2,m_Female_VAR_Fold2);
+			//cout << "g2: " << g2(0,0) << endl;
+			
+			double classify = g1(0,0)-g2(0,0);
+			cout << "(g1-g2): " << classify << endl;
+			
+			if(classify > 0)
+			{
+				numMales++;
+			}
+			else
+			{
+				numFemales++;
+			}
+		}
+		cout << "Classified Males: " <<	numMales << endl;
+		cout << "Classified Females: " << numFemales << endl;
+	}
+	else if(fold == 3)
+	{
+		int numMales = 0, numFemales = 0;
+		cout << "Running testing data..." << endl;
+		for (int j = 0; j < m_TestVector_Fold3.size(); ++j)
+		{
+			MatrixXd test(30,30);
+			for (int i = 0; i < m_TestVector_Fold3[j].size(); ++i)
+			{
+				test(i,i) = m_TestVector_Fold3[j][i];
+			}
+
+			// cout << "test: " << endl << test << endl;
+
+			MatrixXd g1 = DiscriminantFunction(test,m_Male_MU_Fold3,m_Male_VAR_Fold3);
+			// cout << "g1: " << g1(0,0) << endl;
+
+			MatrixXd g2 = DiscriminantFunction(test,m_Female_MU_Fold3,m_Female_VAR_Fold3);
+			// cout << "g2: " << g2(0,0) << endl;
+			
+			double classify = g1(0,0)-g2(0,0);
+			cout << "(g1-g2): " << classify << endl;
+			
+			if(classify > 0)
+			{
+				numMales++;
+			}
+			else
+			{
+				numFemales++;
+			}
+		}
+		cout << "Classified Males: " <<	numMales << endl;
+		cout << "Classified Females: " << numFemales << endl;
+	}
+}
+void DataStorage_48x60::BayesianClassifier(int fold)
+{
 	
-	// cout << "Computing variances..." << endl;
-	ExtractVAR(m_TrainVector_Fold3, m_MeanEigenFeatures_Fold3, returnArray);
-	for (int i = 0; i < 30; ++i)
-	{
-		// cout << i << ": " << returnArray[i] << endl;
-		m_VarEigenFeatures_Fold3.push_back(returnArray[i]);
-	}
-	DblVectorToE3Vector(m_VarEigenFeatures_Fold3, 1, 3);
 }
-
-void DataStorage_48x60::DblVectorToE3Vector(vector<double> input, bool convertVariance, int fold)
+MatrixXd DiscriminantFunction(MatrixXd x, MatrixXd mu, MatrixXd sigma)
 {
-	for (int i = 0; i < input.size(); ++i)
-	{
-		if(!convertVariance)
-		{
-			if(fold == 1)
-			{
-				m_MU_Fold1(i) = input[i];
-				// cout << m_MU_Fold1(i) << " ";
-			}
-			else if(fold == 2)
-			{
-				m_MU_Fold2(i) = input[i];
-				// cout << m_MU_Fold2(i) << " ";
-			}
-			else if(fold == 3)
-			{
-				m_MU_Fold3(i) = input[i];
-				// cout << m_MU_Fold3(i) << " ";
-			}
-		}
-		else
-		{
-			if(fold == 1)
-			{
-				m_VAR_Fold1(i) = input[i];
-				// cout << m_VAR_Fold1(i) << " ";
-			}
-			else if(fold == 2)
-			{
-				m_VAR_Fold2(i) = input[i];
-				// cout << m_VAR_Fold2(i) << " ";
-			}
-			else if(fold == 3)
-			{
-				m_VAR_Fold3(i) = input[i];
-				// cout << m_VAR_Fold3(i) << " ";
-			}
-		}
-	}
-	// cout << endl;
-}
+	MatrixXd xt = x.transpose();
+	MatrixXd mt = mu.transpose();
+	MatrixXd sigma_inv = sigma.inverse();
+	MatrixXd W = -0.5 * sigma_inv;
+	MatrixXd w = sigma_inv * mu;
+	MatrixXd wt  = w.transpose();
+	MatrixXd w0 = (-0.5 * mt * sigma_inv * mu);
+	w0(0, 0) -= (0.5 * log(sigma.determinant()));
 
-void DataStorage_16x20::DblVectorToE3Vector(vector<double> input, bool convertVariance, int fold)
-{
-	for (int i = 0; i < input.size(); ++i)
-	{
-		if(!convertVariance)
-		{
-			if(fold == 1)
-			{
-				m_MU_Fold1(i) = input[i];
-				// cout << m_MU_Fold1(i) << " ";
-			}
-			else if(fold == 2)
-			{
-				m_MU_Fold2(i) = input[i];
-				// cout << m_MU_Fold2(i) << " ";
-			}
-			else if(fold == 3)
-			{
-				m_MU_Fold3(i) = input[i];
-				// cout << m_MU_Fold3(i) << " ";
-			}
-		}
-		else
-		{
-			if(fold == 1)
-			{
-				m_VAR_Fold1(i) = input[i];
-				// cout << m_VAR_Fold1(i) << " ";
-			}
-			else if(fold == 2)
-			{
-				m_VAR_Fold2(i) = input[i];
-				// cout << m_VAR_Fold2(i) << " ";
-			}
-			else if(fold == 3)
-			{
-				m_VAR_Fold3(i) = input[i];
-				// cout << m_VAR_Fold3(i) << " ";
-			}
-		}
-	}
-	// cout << endl;
-}
+	MatrixXd g_i = (xt * W * x) + (wt * x) + w0;
 
-void ExtractAVG(vector<vector<double> > input, double (&array)[30])
+	return g_i;
+}
+void ExtractAVG(vector<vector<double> > input, vector<int> labels, double (&maleArray)[30], double (&femaleArray)[30])
 {
 	for (int i = 0; i < 30; ++i)
 	{
-		array[i] = 0;
+		maleArray[i] = 0;
+		femaleArray[i] = 0;
 	}
+
+	int malesInData = 0, femalesInData = 0;
+	for (int i = 0; i < labels.size(); ++i)
+	{
+		if(labels[i] == 1)
+		{
+			malesInData++;
+		}
+		else
+		{
+			femalesInData++;
+		}
+	}
+
+	cout << "Males in data: " << malesInData << endl;
+	cout << "Females in data: " << femalesInData << endl;
 
 	for (int i = 0; i < input.size(); ++i)
 	{
 		for (int j = 0; j < input[i].size(); ++j)
 		{
-			array[j] += input[i][j];
+			if(labels[i] == 1) //male
+			{
+				maleArray[j] += input[i][j];
+			}
+			else //female
+			{
+				femaleArray[j] += input[i][j];
+			}
 		}
 	}
 
 	for (int i = 0; i < 30; ++i)
 	{
-		array[i] /= 30;
+		maleArray[i] /= malesInData;
+		//cout << "sumDbl: " << array[i] << endl;
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{
+		femaleArray[i] /= femalesInData;
 		//cout << "sumDbl: " << array[i] << endl;
 	}
 }
-void ExtractVAR(vector<vector<double> > input, vector<double> means, double (&array)[30])
+void ExtractVAR(vector<vector<double> > input, vector<double> maleMeans, vector<double> femaleMeans, vector<int> labels, double (&maleArray)[30], double (&femaleArray)[30])
 {
 	for (int i = 0; i < 30; ++i)
 	{
-		array[i] = 0;
+		maleArray[i] = 0;
+		femaleArray[i] = 0;
 	}
+
+	int malesInData = 0, femalesInData = 0;
+	for (int i = 0; i < labels.size(); ++i)
+	{
+		if(labels[i] == 1)
+		{
+			malesInData++;
+		}
+		else
+		{
+			femalesInData++;
+		}
+	}
+
+	cout << "Males in data: " << malesInData << endl;
+	cout << "Females in data: " << femalesInData << endl;
 
 	for (int i = 0; i < input.size(); ++i)
 	{
 		for (int j = 0; j < input[i].size(); ++j)
 		{
-			array[j] += (input[i][j]-means[j])*(input[i][j]-means[j]);
+			if(labels[i] == 1) //male
+			{
+				maleArray[j] += (input[i][j]-maleMeans[j])*(input[i][j]-maleMeans[j]);
+			}
+			else
+			{
+				femaleArray[j] += (input[i][j]-femaleMeans[j])*(input[i][j]-femaleMeans[j]);
+			}
 		}
 	}
 
 	for (int i = 0; i < 30; ++i)
 	{
-		array[i] /= 30;
+		maleArray[i] /= malesInData;
+		//cout << "sumDbl: " << array[i] << endl;
+	}
+
+	for (int i = 0; i < 30; ++i)
+	{
+		femaleArray[i] /= femalesInData;
 		//cout << "sumDbl: " << array[i] << endl;
 	}
 }
@@ -1914,7 +2322,6 @@ void PrintVector2D(vector<vector<double> > vector)
 		cout << endl;
 	}
 }
-
 void PrintVector(vector<int> vector)
 {
 	for (int i = 0; i < vector.size(); ++i)
