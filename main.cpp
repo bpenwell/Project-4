@@ -41,7 +41,7 @@ public:
 	void ReduceSizeTo30();
 	void ComputeAvgEigenFeatures();
 	void DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold);
-	void BayesianClassifier(int fold);
+	double BayesianClassifier(int fold);
 
 	const string m_DATA_PATH;
 	const string m_EXT;
@@ -146,14 +146,21 @@ int main(int argc, char *argv[])
 		}
 		else if(inputString == "2")
 		{
+			double averageError_16x20 = 0, averageError_48x60 = 0;
 			for (int i = 1; i <= NUM_FOLDS; i++)
 			{
 				cout << "Classifying fold " << i << " data from 16x20 files..." << endl;
-				Data_16x20.BayesianClassifier(i);
+				averageError_16x20 += Data_16x20.BayesianClassifier(i);
 
 				cout << "Classifying fold " << i << " data from 48x60 files..." << endl;
-				Data_48x60.BayesianClassifier(i);
+				averageError_48x60 += Data_48x60.BayesianClassifier(i);
 			}
+
+			averageError_48x60 /= NUM_FOLDS;
+			averageError_16x20 /= NUM_FOLDS;
+
+			cout << endl << "Average error for 16x20 dataset: " << averageError_16x20*100 << "%" << endl;
+			cout << endl << "Average error for 48x60 dataset: " << averageError_48x60*100 << "%" << endl;
 		}
 
 	}while(inputString != "-1");
@@ -400,6 +407,11 @@ void DataStorage::ComputeAvgEigenFeatures()
 
 		DblVectorToE3Matrix(m_VarMaleEigenFeatures[foldNum-1], 1, 1, foldNum);
 		DblVectorToE3Matrix(m_VarFemaleEigenFeatures[foldNum-1], 0, 1, foldNum);
+		
+		//cout << endl << "m_Male_MU[foldNum-1]..." << endl << m_Male_MU[foldNum-1] << endl;
+		//cout << endl << "m_Male_VAR[foldNum-1]..." << endl << m_Male_VAR[foldNum-1] << endl;
+		//cout << endl << "m_Female_MU[foldNum-1]..." << endl << m_Female_MU[foldNum-1] << endl;
+		//cout << endl << "m_Female_VAR[foldNum-1]..." << endl << m_Female_VAR[foldNum-1] << endl;
 	}
 		
 }
@@ -434,9 +446,9 @@ void DataStorage::DblVectorToE3Matrix(vector<double> input, bool isMaleVector, b
 	// cout << endl;
 }
 
-void DataStorage::BayesianClassifier(int fold)
+double DataStorage::BayesianClassifier(int fold)
 {
-	int numMales = 0, numFemales = 0;
+	int numMales = 0, numFemales = 0, numErrors = 0;
 	cout << "Running testing data..." << endl;
 
 	// PrintVector2D(m_TestVector[fold-1]);
@@ -463,19 +475,71 @@ void DataStorage::BayesianClassifier(int fold)
 		//cout << "g2: " << g2(0,0) << endl;
 		
 		double classify = g1(0, 0) - g2(0, 0);
-		cout << "(g1-g2): " << classify << endl;
+		//cout << "(g1-g2): " << classify << endl;
 		
 		if(classify > 0)
 		{
+			if(m_TestTargetVector[fold-1][j] == 2)
+			{
+				numErrors++;
+			}
 			numMales++;
 		}
 		else
 		{
+			if(m_TestTargetVector[fold-1][j] == 1)
+			{
+				numErrors++;
+			}
+			numFemales++;
+		}
+	}
+	//cout << "Classified Males: " <<	numMales << endl;
+	//cout << "Classified Females: " << numFemales << endl;
+	//cout << "Errors: " << numErrors << endl;
+	for (int j = 0; j < m_ValidateVector[fold-1].size(); ++j)
+	{
+		MatrixXd x_vec(m_ValidateVector[fold-1][j].size(), 1);
+		for (int i = 0; i < m_ValidateVector[fold-1][j].size(); ++i)
+		{
+			x_vec(i, 0) = m_ValidateVector[fold-1][j][i];
+		}
+
+		// cout << "x_vec: " << endl << x_vec << endl;
+
+		MatrixXd g1 = DiscriminantFunction(x_vec, m_Male_MU[fold-1], m_Male_VAR[fold-1]);
+		//cout << "g1: " << g1(0,0) << endl;
+
+		MatrixXd g2 = DiscriminantFunction(x_vec, m_Female_MU[fold-1], m_Female_VAR[fold-1]);
+		//cout << "g2: " << g2(0,0) << endl;
+		
+		double classify = g1(0, 0) - g2(0, 0);
+		//cout << "(g1-g2): " << classify << endl;
+
+		if(classify > 0)
+		{
+			if(m_ValidateTargetVector[fold-1][j] == 2)
+			{
+				numErrors++;
+			}
+			numMales++;
+		}
+		else
+		{
+			if(m_ValidateTargetVector[fold-1][j] == 1)
+			{
+				numErrors++;
+			}
 			numFemales++;
 		}
 	}
 	cout << "Classified Males: " <<	numMales << endl;
 	cout << "Classified Females: " << numFemales << endl;
+	cout << "Errors: " << numErrors << endl;
+	int totalSamples = numMales + numFemales;
+	cout << "Performance (in percent): " << (1-((float)numErrors/(float)totalSamples))*100 << "%" << endl;
+	cout << endl;
+	return ((float)numErrors/(float)totalSamples);
 }
 
 MatrixXd DiscriminantFunction(MatrixXd x, MatrixXd mu, MatrixXd sigma)
