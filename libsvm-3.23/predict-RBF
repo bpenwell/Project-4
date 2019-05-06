@@ -3,23 +3,23 @@
 
 for C in {1,10,100,1000}
 do
-    for g in {1,10,100}
+    for s in {1,10,100}
     do
         echo Predicting test data for 16_20 dataset using model \
-        ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}.model
+        ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}.model
         ./svm-predict ../genderdata-16_20-t.scale \
-        ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}.model \
-        ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}-results
+        ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}.model \
+        ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}-results
         echo Finished test data for 16_20 dataset! Output file located at \
-        ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}-results
+        ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}-results
         echo
         echo Predicting test data for 48_60 dataset using model \
-        ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}.model
+        ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}.model
         ./svm-predict ../genderdata-48_60-t.scale \
-        ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}.model \
-        ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}-results
+        ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}.model \
+        ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}-results
         echo Finished test data for 48_60 dataset! Output file located at \
-        ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}-results
+        ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}-results
         echo
     done
 done
