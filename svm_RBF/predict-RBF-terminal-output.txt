@@ -1,0 +1,96 @@
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1_g1.model
+Accuracy = 49.2481% (393/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g1-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1_g1.model
+Accuracy = 50.1253% (400/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g1-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1_g10.model
+Accuracy = 49.3734% (394/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g10-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1_g10.model
+Accuracy = 50.3759% (402/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g10-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1_g100.model
+Accuracy = 49.3734% (394/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g100-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1_g100.model
+Accuracy = 51.0025% (407/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g100-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C10_g1.model
+Accuracy = 47.8697% (382/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g1-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C10_g1.model
+Accuracy = 49.2481% (393/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g1-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C10_g10.model
+Accuracy = 49.1228% (392/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g10-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C10_g10.model
+Accuracy = 48.6216% (388/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g10-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C10_g100.model
+Accuracy = 49.4987% (395/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g100-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C10_g100.model
+Accuracy = 50.7519% (405/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g100-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C100_g1.model
+Accuracy = 49.7494% (397/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g1-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C100_g1.model
+Accuracy = 47.8697% (382/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g1-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C100_g10.model
+Accuracy = 50.7519% (405/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g10-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C100_g10.model
+Accuracy = 48.6216% (388/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g10-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C100_g100.model
+Accuracy = 49.4987% (395/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g100-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C100_g100.model
+Accuracy = 50.7519% (405/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g100-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1000_g1.model
+Accuracy = 48.8722% (390/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g1-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1000_g1.model
+Accuracy = 48.3709% (386/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g1-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1000_g10.model
+Accuracy = 49.6241% (396/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g10-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1000_g10.model
+Accuracy = 48.6216% (388/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g10-results
+
+Predicting test data for 16_20 dataset using model ../svm_RBF/genderdata-16_20-RBF_C1000_g100.model
+Accuracy = 49.4987% (395/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g100-results
+
+Predicting test data for 48_60 dataset using model ../svm_RBF/genderdata-48_60-RBF_C1000_g100.model
+Accuracy = 50.7519% (405/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g100-results
+
