@@ -3,18 +3,25 @@
 
 for C in {1,10,100,1000}
 do
-    for g in {1,10,100}
+    for s in {1,10,100}
     do
+        den=`echo "2 * $s * $s" | bc -l`
+        g=`echo "1 / $den" | bc -l | sed '/\./ s/\.\{0,1\}0\{1,\}$//'`
+
         echo Training SVM classifiers for 16_20 and 48_60 datasets with \
         parameters C=$C, g=$g...
+
+        # 16_20 dataset
         ./svm-train -s 0 -c $C -t 2 -r 0 -g $g ../genderdata-16_20.scale \
-        ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}.model
+        ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}.model
         echo Finished training SVM classifier for 16_20! Output file located \
-        at ../svm_RBF/genderdata-16_20-RBF_C${C}_g${g}.model
+        at ../svm_RBF/genderdata-16_20-RBF_C${C}_s${s}.model
+
+        # 48_60 dataset
         ./svm-train -s 0 -c $C -t 2 -r 0 -g $g ../genderdata-48_60.scale \
-        ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}.model
+        ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}.model
         echo Finished training SVM classifier for 48_60! Output file located \
-        at ../svm_RBF/genderdata-48_60-RBF_C${C}_g${g}.model
+        at ../svm_RBF/genderdata-48_60-RBF_C${C}_s${s}.model
         echo
     done
 done

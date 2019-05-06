@@ -1,192 +1,192 @@
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=1...
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=.5...
 *
-optimization finished, #iter = 274
-nu = 0.947488
-obj = -337.270877, rho = -0.112365
-nSV = 393, nBSV = 355
-Total nSV = 393
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g1.model
-*
-optimization finished, #iter = 275
-nu = 0.933939
-obj = -322.338544, rho = -0.156479
-nSV = 391, nBSV = 347
-Total nSV = 391
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g1.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=10...
-*.*
-optimization finished, #iter = 447
-nu = 0.904529
-obj = -268.931140, rho = -0.184757
-nSV = 393, nBSV = 269
-Total nSV = 393
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g10.model
-.*
-optimization finished, #iter = 479
-nu = 0.903612
-obj = -217.170332, rho = -0.128401
-nSV = 397, nBSV = 227
+optimization finished, #iter = 240
+nu = 0.972138
+obj = -356.507283, rho = 0.009641
+nSV = 397, nBSV = 375
 Total nSV = 397
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g10.model
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_s1.model
+*
+optimization finished, #iter = 253
+nu = 0.954326
+obj = -346.049774, rho = -0.095336
+nSV = 394, nBSV = 369
+Total nSV = 394
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_s1.model
 
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=100...
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=.005...
+*
+optimization finished, #iter = 204
+nu = 0.995025
+obj = -398.963710, rho = -0.738771
+nSV = 401, nBSV = 398
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_s10.model
+*
+optimization finished, #iter = 204
+nu = 0.995025
+obj = -398.819867, rho = -0.725495
+nSV = 401, nBSV = 398
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_s10.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1, g=.00005...
+*
+optimization finished, #iter = 201
+nu = 0.995025
+obj = -399.989364, rho = -0.997378
+nSV = 401, nBSV = 399
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_s100.model
+*
+optimization finished, #iter = 201
+nu = 0.995025
+obj = -399.988269, rho = -0.997071
+nSV = 401, nBSV = 399
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_s100.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=.5...
 .*
-optimization finished, #iter = 525
-nu = 0.965276
-obj = -211.771604, rho = -0.047788
-nSV = 402, nBSV = 209
-Total nSV = 402
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1_g100.model
-.*
-optimization finished, #iter = 663
-nu = 0.994359
-obj = -200.869800, rho = -0.010873
-nSV = 402, nBSV = 194
-Total nSV = 402
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1_g100.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=1...
+optimization finished, #iter = 764
+nu = 0.775394
+obj = -2834.666688, rho = -0.269404
+nSV = 369, nBSV = 280
+Total nSV = 369
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_s1.model
 .*.*
-optimization finished, #iter = 914
-nu = 0.703868
-obj = -2489.492598, rho = -0.168167
-nSV = 362, nBSV = 239
-Total nSV = 362
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g1.model
-..*.*
-optimization finished, #iter = 1294
-nu = 0.629535
-obj = -1967.151924, rho = -0.195124
-nSV = 368, nBSV = 182
-Total nSV = 368
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g1.model
+optimization finished, #iter = 1082
+nu = 0.735462
+obj = -2535.539961, rho = -0.211261
+nSV = 369, nBSV = 242
+Total nSV = 369
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_s1.model
 
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=10...
-..*
-optimization finished, #iter = 1203
-nu = 0.396737
-obj = -1128.262615, rho = -0.158423
-nSV = 378, nBSV = 91
-Total nSV = 378
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g10.model
-.*.*
-optimization finished, #iter = 995
-nu = 0.133679
-obj = -268.713863, rho = -0.090246
-nSV = 399, nBSV = 0
-Total nSV = 399
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g10.model
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=.005...
+*
+optimization finished, #iter = 220
+nu = 0.991756
+obj = -3898.416727, rho = 1.135788
+nSV = 401, nBSV = 394
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_s10.model
+*
+optimization finished, #iter = 215
+nu = 0.990335
+obj = -3889.985170, rho = 1.107594
+nSV = 401, nBSV = 395
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_s10.model
 
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=100...
-.*.*
-optimization finished, #iter = 876
-nu = 0.115074
-obj = -231.299304, rho = -0.043551
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_g100.model
-.*
-optimization finished, #iter = 769
-nu = 0.099937
-obj = -200.875509, rho = -0.005886
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_g100.model
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=10, g=.00005...
+*
+optimization finished, #iter = 203
+nu = 0.995025
+obj = -3998.946708, rho = -0.972092
+nSV = 401, nBSV = 399
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C10_s100.model
+*
+optimization finished, #iter = 202
+nu = 0.995025
+obj = -3998.827720, rho = -0.970119
+nSV = 401, nBSV = 398
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C10_s100.model
 
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=1...
-.....*..*
-optimization finished, #iter = 2980
-nu = 0.512998
-obj = -17566.766958, rho = -0.582495
-nSV = 337, nBSV = 169
-Total nSV = 337
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g1.model
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=.5...
+....*..*
+optimization finished, #iter = 2490
+nu = 0.608635
+obj = -21630.593405, rho = -0.712482
+nSV = 334, nBSV = 211
+Total nSV = 334
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_s1.model
 ........*...*
-optimization finished, #iter = 4487
-nu = 0.283701
-obj = -7105.116573, rho = -0.178307
-nSV = 326, nBSV = 48
-Total nSV = 326
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g1.model
+optimization finished, #iter = 4451
+nu = 0.487491
+obj = -14021.003910, rho = -0.664973
+nSV = 337, nBSV = 129
+Total nSV = 337
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_s1.model
 
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=10...
-.....*.*
-optimization finished, #iter = 2808
-nu = 0.145714
-obj = -3512.108858, rho = -0.185710
-nSV = 346, nBSV = 18
-Total nSV = 346
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g10.model
-.*.*
-optimization finished, #iter = 995
-nu = 0.013368
-obj = -268.713863, rho = -0.090246
-nSV = 399, nBSV = 0
-Total nSV = 399
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g10.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=100...
-.*.*
-optimization finished, #iter = 876
-nu = 0.011507
-obj = -231.299304, rho = -0.043551
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_g100.model
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=.005...
 .*
-optimization finished, #iter = 769
-nu = 0.009994
-obj = -200.875509, rho = -0.005886
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_g100.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=1...
-......................*........*
-optimization finished, #iter = 12428
-nu = 0.334159
-obj = -101890.410196, rho = -2.302277
-nSV = 294, nBSV = 86
-Total nSV = 294
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g1.model
-..............*......*
-optimization finished, #iter = 8309
-nu = 0.048732
-obj = -9796.481663, rho = -0.339292
-nSV = 295, nBSV = 0
-Total nSV = 295
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g1.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=10...
-.......*...*
-optimization finished, #iter = 4034
-nu = 0.021578
-obj = -4337.828241, rho = -0.165293
-nSV = 332, nBSV = 0
-Total nSV = 332
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g10.model
-.*.*
-optimization finished, #iter = 995
-nu = 0.001337
-obj = -268.713863, rho = -0.090246
-nSV = 399, nBSV = 0
-Total nSV = 399
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g10.model
-
-Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=100...
-.*.*
-optimization finished, #iter = 876
-nu = 0.001151
-obj = -231.299304, rho = -0.043551
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_g100.model
+optimization finished, #iter = 749
+nu = 0.931765
+obj = -36017.286114, rho = -1.460518
+nSV = 388, nBSV = 362
+Total nSV = 388
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_s10.model
 .*
-optimization finished, #iter = 769
-nu = 0.000999
-obj = -200.875509, rho = -0.005886
-nSV = 402, nBSV = 0
-Total nSV = 402
-Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_g100.model
+optimization finished, #iter = 499
+nu = 0.927469
+obj = -35775.994484, rho = 8.007437
+nSV = 382, nBSV = 361
+Total nSV = 382
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_s10.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=100, g=.00005...
+*
+optimization finished, #iter = 207
+nu = 0.995025
+obj = -39894.707847, rho = -0.716661
+nSV = 401, nBSV = 397
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C100_s100.model
+*
+optimization finished, #iter = 204
+nu = 0.995025
+obj = -39882.783277, rho = -0.701538
+nSV = 401, nBSV = 398
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C100_s100.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=.5...
+...................*.........*..*
+optimization finished, #iter = 12115
+nu = 0.446932
+obj = -147266.552299, rho = -2.882309
+nSV = 312, nBSV = 142
+Total nSV = 312
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_s1.model
+.......................*............*
+optimization finished, #iter = 14333
+nu = 0.170665
+obj = -37614.563895, rho = -0.950030
+nSV = 288, nBSV = 17
+Total nSV = 288
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_s1.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=.005...
+....*...*
+optimization finished, #iter = 3029
+nu = 0.854480
+obj = -335265.395172, rho = -8.288047
+nSV = 365, nBSV = 330
+Total nSV = 365
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_s10.model
+.....*....*
+optimization finished, #iter = 3801
+nu = 0.851233
+obj = -334100.041118, rho = -5.531653
+nSV = 361, nBSV = 323
+Total nSV = 361
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_s10.model
+
+Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=1000, g=.00005...
+*
+optimization finished, #iter = 223
+nu = 0.991298
+obj = -389736.674910, rho = 1.303939
+nSV = 401, nBSV = 393
+Total nSV = 401
+Finished training SVM classifier for 16_20! Output file located at ../svm_RBF/genderdata-16_20-RBF_C1000_s100.model
+*
+optimization finished, #iter = 214
+nu = 0.990203
+obj = -389199.853343, rho = 1.260263
+nSV = 401, nBSV = 395
+Total nSV = 401
+Finished training SVM classifier for 48_60! Output file located at ../svm_RBF/genderdata-48_60-RBF_C1000_s100.model
 
