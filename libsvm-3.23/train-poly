@@ -1,14 +1,20 @@
 #!/bin/bash
+# train-poly
 
 for C in {1,10,100,1000}
 do
     for d in {1,2,3}
     do
-        echo Training SVM classifiers for 16_20 and 48_60 datasets with parameters C=$C, d=$d...
-        ./svm-train -s 0 -c $C -t 1 -g 1 -r 0 -d $d ../genderdata-16_20.scale ../genderdata-16_20-poly_C${C}_d${d}.model
-        echo Finished training SVM classifier for 16_20! Output file located at ../genderdata-16_20-poly_C${C}_d${d}.model
-        ./svm-train -s 0 -c $C -t 1 -g 1 -r 0 -d $d ../genderdata-48_60.scale ../genderdata-48_60-poly_C${C}_d${d}.model
-        echo Finished training SVM classifier for 48_60! Output file located at ../genderdata-48_60-poly_C${C}_d${d}.model
+        echo Training SVM classifiers for 16_20 and 48_60 datasets with \
+        parameters C=$C, d=$d...
+        ./svm-train -s 0 -c $C -t 1 -g 1 -r 0 -d $d ../genderdata-16_20.scale \
+        ../svm_poly/genderdata-16_20-poly_C${C}_d${d}.model
+        echo Finished training SVM classifier for 16_20! Output file located \
+        at ../svm_poly/genderdata-16_20-poly_C${C}_d${d}.model
+        ./svm-train -s 0 -c $C -t 1 -g 1 -r 0 -d $d ../genderdata-48_60.scale \
+        ../svm_poly/genderdata-48_60-poly_C${C}_d${d}.model
+        echo Finished training SVM classifier for 48_60! Output file located \
+        at ../svm_poly/genderdata-48_60-poly_C${C}_d${d}.model
         echo
     done
 done
