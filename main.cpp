@@ -42,7 +42,11 @@ public:
 	void ComputeAvgEigenFeatures();
 	void DblVectorToE3Matrix(vector<double> input, bool isMaleVector, bool convertVariance, int fold);
 	double BayesianClassifier(int fold);
+	void writeDataInLibSVMFormatHelper(ofstream &fout, string setPfx);
+	void writeDataInLibSVMFormat();
 
+	const string m_DATA_SET;
+	const string m_DB_ROOT;
 	const string m_DATA_PATH;
 	const string m_EXT;
 
@@ -111,6 +115,7 @@ int main(int argc, char *argv[])
 			 << "|Select  0 to obtain 16x20 & 48x60 projected values (fold 1, 2, 3)           |\n"
 			 << "|Select  1 to calc 16x20 & 48x60 avg eigen-features (fold 1, 2, 3)           |\n"
 			 << "|Select  2 to test data with bayesian classifier                             |\n"
+			 << "|Select  3 to to write data to file in LibSVM format (req. 0)                |\n"
 		     << "|Select -1 to exit                                                           |\n"
 		     << "+============================================================================+\n"
 		     << endl
@@ -118,7 +123,7 @@ int main(int argc, char *argv[])
 
 		cin >> inputString;
 
-		if(inputString == "0") 
+		if (inputString == "0") 
 		{
 			cout << "Extracting data from 48x60 files..." << endl;
 			Data_48x60.Init(); //Obtain all needed data from files
@@ -130,7 +135,7 @@ int main(int argc, char *argv[])
 			cout << "Resizing eigen-feature vectors to 30..." << endl;
 			Data_16x20.ReduceSizeTo30();
 		}
-		else if(inputString == "1")
+		else if (inputString == "1")
 		{
 			cout << "Extracting data from 48x60 files..." << endl;
 			Data_48x60.ComputeAvgEigenFeatures(); //Initialize avg eigen-features
@@ -144,7 +149,7 @@ int main(int argc, char *argv[])
 			//cout << Data_16x20.m_MU_Fold1 << endl;
 		
 		}
-		else if(inputString == "2")
+		else if (inputString == "2")
 		{
 			double averageError_16x20 = 0, averageError_48x60 = 0;
 			for (int i = 1; i <= NUM_FOLDS; i++)
@@ -162,11 +167,18 @@ int main(int argc, char *argv[])
 			cout << endl << "Average error for 16x20 dataset: " << averageError_16x20*100 << "%" << endl;
 			cout << endl << "Average error for 48x60 dataset: " << averageError_48x60*100 << "%" << endl;
 		}
+		else if (inputString == "3")
+		{
+			Data_16x20.writeDataInLibSVMFormat();
+			Data_48x60.writeDataInLibSVMFormat();
+		}
 
-	}while(inputString != "-1");
+	}while (inputString != "-1");
 }
 
 DataStorage::DataStorage(string dataSet, string dbRoot) :
+	m_DATA_SET(dataSet),
+	m_DB_ROOT(dbRoot),
 	m_DATA_PATH(string(dbRoot + "/" + dataSet + "/"))
 {}
 
@@ -311,43 +323,6 @@ void DataStorage::ReduceSizeTo30()
 			m_TestVector[foldNum-1][i].resize(30);
 		}
 	}
-
-	// //----------------------------------
-	// //TRAINING
-	// for (int foldNum = 1; foldNum <= NUM_FOLDS; foldNum++)
-	// {
-	// 	for (int i = 0; i < m_TrainVector[foldNum-1].size(); ++i)
-	// 	{
-	// 		m_TrainVector[foldNum-1][i].erase(m_TrainVector[foldNum-1][i].begin() + 30, m_TrainVector[foldNum-1][i].end());
-	// 	}
-	// 	// cout << "m_TrainVector[foldNum-1]: " << endl;
-	// 	// PrintVector2D(m_TrainVector[foldNum-1]);
-	// }
-
-	// //----------------------------------
-	// //VALIDATION
-
-	// for (int foldNum = 1; foldNum <= NUM_FOLDS; foldNum++)
-	// {
-	// 	for (int i = 0; i < m_ValidateVector[foldNum-1].size(); ++i)
-	// 	{
-	// 		m_ValidateVector[foldNum-1][i].erase(m_ValidateVector[foldNum-1][i].begin() + 30, m_ValidateVector[foldNum-1][i].end());
-	// 	}
-	// 	// cout << "m_ValidateVector[foldNum-1]: " << endl;
-	// 	// PrintVector2D(m_ValidateVector[foldNum-1]);
-	// }
-	
-	// //----------------------------------
-	// //TESTING
-	// for (int foldNum = 1; foldNum <= NUM_FOLDS; foldNum++)
-	// {
-	// 	for (int i = 0; i < m_TestVector[foldNum-1].size(); ++i)
-	// 	{
-	// 		m_TestVector[foldNum-1][i].erase(m_TestVector[foldNum-1][i].begin() + 30, m_TestVector[foldNum-1][i].end());
-	// 	}
-	// 	// cout << "m_TestVector[foldNum-1]: " << endl;
-	// 	// PrintVector2D(m_TestVector[foldNum-1]);
-	// }
 }
 
 void DataStorage::ComputeAvgEigenFeatures()
@@ -540,6 +515,83 @@ double DataStorage::BayesianClassifier(int fold)
 	cout << "Performance (in percent): " << (1-((float)numErrors/(float)totalSamples))*100 << "%" << endl;
 	cout << endl;
 	return ((float)numErrors/(float)totalSamples);
+}
+
+void DataStorage::writeDataInLibSVMFormatHelper(ofstream &fout, string setPfx)
+{
+	cout << "Writing " << m_DATA_SET << " data for " << setPfx << "..." << endl;
+
+	for (int fold = 0; fold < NUM_FOLDS; fold++)
+	{
+		vector<vector<double> > *dataVecPtr;
+		vector<int> *targetVecPtr;
+		unsigned numSamples;
+
+		if (setPfx == m_TR_PFX)
+		{
+			dataVecPtr = &(m_TrainVector[fold]);
+			targetVecPtr = &(m_TrainTargetVector[fold]);
+		}
+		else if (setPfx == m_VAL_PFX)
+		{
+			dataVecPtr = &(m_ValidateVector[fold]);
+			targetVecPtr = &(m_ValidateTargetVector[fold]);
+		}
+		else if (setPfx == m_TS_PFX)
+		{
+			dataVecPtr = &(m_TestVector[fold]);
+			targetVecPtr = &(m_TestTargetVector[fold]);
+		}
+		else
+		{
+			cout << "Error: unable to write data in LibSVM format" << endl;
+			return;
+		}			
+
+
+		numSamples = (*dataVecPtr).size();
+
+		for (unsigned i = 0; i < numSamples; i++)
+		{
+			unsigned size = (*dataVecPtr)[i].size();
+
+			fout << (*targetVecPtr)[i] << "  ";
+
+			for (unsigned j = 0; j < size; j++)
+			{
+				fout << j + 1 << ":" << (*dataVecPtr)[i][j];
+
+				if (j < size - 1)
+				{
+					fout << " ";
+				}
+			}
+
+			if (i < numSamples - 1)
+			{
+				fout << "\n";
+			}
+		}
+	
+		fout << "\n";
+	}
+
+	cout << "Done!" << endl;
+}
+
+void DataStorage::writeDataInLibSVMFormat()
+{
+	string filename = m_DB_ROOT + "-" + m_DATA_SET;
+
+	ofstream fout_tr(filename.c_str());
+	ofstream fout_ts((filename + ".t").c_str());
+
+	writeDataInLibSVMFormatHelper(fout_tr, m_TR_PFX);
+	writeDataInLibSVMFormatHelper(fout_ts, m_VAL_PFX);
+	writeDataInLibSVMFormatHelper(fout_ts, m_TS_PFX);
+
+	fout_tr.close();
+	fout_ts.close();
 }
 
 MatrixXd DiscriminantFunction(MatrixXd x, MatrixXd mu, MatrixXd sigma)
