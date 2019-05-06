@@ -1,0 +1,25 @@
+#!/bin/bash
+# predict-poly
+
+for C in {1,10,100,1000}
+do
+    for d in {1,2,3}
+    do
+        echo Predicting test data for 16_20 dataset using model \
+        ../svm_poly/genderdata-16_20-poly_C${C}_d${d}.model
+        ./svm-predict ../genderdata-16_20-t.scale \
+        ../svm_poly/genderdata-16_20-poly_C${C}_d${d}.model \
+        ../svm_poly/genderdata-16_20-poly_C${C}_d${d}-results
+        echo Finished test data for 16_20 dataset! Output file located at \
+        ../svm_poly/genderdata-16_20-poly_C${C}_d${d}-results
+        echo
+        echo Predicting test data for 48_60 dataset using model \
+        ../svm_poly/genderdata-48_60-poly_C${C}_d${d}.model
+        ./svm-predict ../genderdata-48_60-t.scale \
+        ../svm_poly/genderdata-48_60-poly_C${C}_d${d}.model \
+        ../svm_poly/genderdata-48_60-poly_C${C}_d${d}-results
+        echo Finished test data for 48_60 dataset! Output file located at \
+        ../svm_poly/genderdata-48_60-poly_C${C}_d${d}-results
+        echo
+    done
+done

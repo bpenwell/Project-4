@@ -1,0 +1,96 @@
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1_d1.model
+Accuracy = 46.8672% (374/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1_d1-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1_d1.model
+Accuracy = 51.3784% (410/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1_d1-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1_d2.model
+Accuracy = 48.8722% (390/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1_d2-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1_d2.model
+Accuracy = 50.2506% (401/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1_d2-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1_d3.model
+Accuracy = 47.995% (383/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1_d3-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1_d3.model
+Accuracy = 49.3734% (394/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1_d3-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C10_d1.model
+Accuracy = 48.7469% (389/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C10_d1-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C10_d1.model
+Accuracy = 52.1303% (416/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C10_d1-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C10_d2.model
+Accuracy = 47.4937% (379/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C10_d2-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C10_d2.model
+Accuracy = 48.1203% (384/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C10_d2-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C10_d3.model
+Accuracy = 47.995% (383/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C10_d3-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C10_d3.model
+Accuracy = 47.995% (383/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C10_d3-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C100_d1.model
+Accuracy = 48.6216% (388/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C100_d1-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C100_d1.model
+Accuracy = 52.6316% (420/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C100_d1-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C100_d2.model
+Accuracy = 47.3684% (378/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C100_d2-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C100_d2.model
+Accuracy = 48.1203% (384/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C100_d2-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C100_d3.model
+Accuracy = 47.2431% (377/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C100_d3-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C100_d3.model
+Accuracy = 49.7494% (397/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C100_d3-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1000_d1.model
+Accuracy = 48.8722% (390/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1000_d1-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1000_d1.model
+Accuracy = 52.6316% (420/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1000_d1-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1000_d2.model
+Accuracy = 47.7444% (381/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1000_d2-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1000_d2.model
+Accuracy = 48.9975% (391/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1000_d2-results
+
+Predicting test data for 16_20 dataset using model ../genderdata-16_20-poly_C1000_d3.model
+Accuracy = 49.6241% (396/798) (classification)
+Finished test data for 16_20 dataset! Output file located at ../genderdata-16_20-poly_C1000_d3-results
+
+Predicting test data for 48_60 dataset using model ../genderdata-48_60-poly_C1000_d3.model
+Accuracy = 48.9975% (391/798) (classification)
+Finished test data for 48_60 dataset! Output file located at ../genderdata-48_60-poly_C1000_d3-results
+
